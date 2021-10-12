@@ -60,15 +60,9 @@
       },
       "node": {
         "appSettings": {
-          {
-            "name": "WEBSITE_NODE_DEFAULT_VERSION",
-            "value": "12.15.0"
-          },
-          {
-            "name": "AzureAd:ClientId",
-            "value": "INPUT_YOUR_REGISTERED_APP_ID"
-          }
-        }
+            "WEBSITE_NODE_DEFAULT_VERSION": "12.15.0" ,
+            "AzureAd:ClientId": "INPUT_YOUR_REGISTERED_APP_ID"
+		}
       }
     }
   },
