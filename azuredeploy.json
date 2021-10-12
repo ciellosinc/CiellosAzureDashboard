@@ -110,7 +110,7 @@
             "isManualIntegration": true
           }
         },
-                {
+        {
           "apiVersion": "2015-08-01",
           "location": "[resourceGroup().location]",
           "type": "config",
@@ -119,7 +119,7 @@
             "[concat('Microsoft.Web/sites/', parameters('webAppName'))]"
           ],
           "properties": "[variables('configReference').node.appSettings]"
-        },
+        }
       ]
     }
   ]
