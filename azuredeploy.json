@@ -91,7 +91,7 @@
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ],
       "properties": {
-        "siteConfig": "[variables('configReference')[parameters('language')]]",
+        "siteConfig": "[variables('configReference')]",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       },
       "resources": [
