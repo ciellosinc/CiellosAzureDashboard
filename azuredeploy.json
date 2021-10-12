@@ -17,19 +17,6 @@
         "description": "Location for all resources."
       }
     },
-    "language": {
-      "type": "string",
-      "defaultValue": ".net",
-      "allowedValues": [
-        ".net",
-        "php",
-        "node",
-        "html"
-      ],
-      "metadata": {
-        "description": "The language stack of the app."
-      }
-    },
     "repoUrl": {
       "type": "string",
       "defaultValue": "https://github.com/ciellos-dev/CiellosAzureDashboard.git",
