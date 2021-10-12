@@ -17,13 +17,6 @@
         "description": "Location for all resources."
       }
     },
-    "sku": {
-      "type": "string",
-      "defaultValue": "F1",
-      "metadata": {
-        "description": "The SKU of App Service Plan."
-      }
-    },
     "language": {
       "type": "string",
       "defaultValue": ".net",
@@ -73,7 +66,7 @@
       "name": "[variables('appServicePlanPortalName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "[parameters('sku')]"
+        "name": "F1"
       }
     },
     {
