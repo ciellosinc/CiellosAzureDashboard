@@ -14,7 +14,7 @@ namespace CiellosAzureDashboard.Pages
 {
     using CiellosAzureDashboard.Data;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
-    using Microsoft.Azure.Management.Samples.Common;
+   // using Microsoft.Azure.Management.Samples.Common;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Rest;

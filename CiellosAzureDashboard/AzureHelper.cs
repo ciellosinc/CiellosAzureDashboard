@@ -37,9 +37,10 @@ namespace CiellosAzureDashboard
             X509Helper = _X509Helper as X509Helper;
             VirtualMashinesList = new VMList(this);
             X509Helper.RotateCertificate();
+            Task.Run(() => RemoveAllVirtualMashinesAsync());
             Task.Run(() => UpdateAllVirtualMashinesAsync());
-            Task.Run(() => StartVirtualMashinesAsync());
-            Task.Run(() => StopVirtualMashinesAsync());
+         //   Task.Run(() => StartVirtualMashinesAsync());
+         //   Task.Run(() => StopVirtualMashinesAsync());
             AzureHelperService.AzureHelper = this;
         }
 
@@ -134,6 +135,19 @@ namespace CiellosAzureDashboard
             return X509Helper.GetPublicKeyCertificate();
         }
 
+        public async Task RemoveAllVirtualMashinesAsync()
+        {
+            while (true)
+            {
+                await Task.Delay(86400000);
+                IsDBLocked = true;
+                RemoveAllVirtualMashines();
+                IsDBLocked = false;
+                GC.Collect();
+            }
+
+        }
+
         public async Task UpdateAllVirtualMashinesAsync()
         {
             while (true)
@@ -199,7 +213,7 @@ namespace CiellosAzureDashboard
 
         }
 
-        public void UpdateAllVirtualMashines()
+        public void RemoveAllVirtualMashines()
         {
             using (CADContext context = new CADContext())
             {
@@ -207,6 +221,15 @@ namespace CiellosAzureDashboard
                 context.VMs.RemoveRange(vmList);
                 context.SaveChanges();
             }
+        }
+            public void UpdateAllVirtualMashines()
+        {
+            /*using (CADContext context = new CADContext())
+            {
+                var vmList = context.VMs.AsNoTracking().ToList();
+                context.VMs.RemoveRange(vmList);
+                context.SaveChanges();
+            }*/
             using (CADContext context = new CADContext())
             {
                 try
@@ -367,7 +390,18 @@ namespace CiellosAzureDashboard
             _virtualMachine = null;
             return vm;
         }
-
+        public VM GetVM(string _vmguid)
+        {
+            try
+            {
+                return this.createLocalVMFromAzureVM(this.GetVMFromAzure(_vmguid));
+            }
+            catch
+            {
+                return null;
+            }
+            
+        }
         /// <summary>
         /// GetVirtualMachinesByUserAsync
         /// </summary>
@@ -527,6 +561,7 @@ namespace CiellosAzureDashboard
             }
 
         }
+
 
         public List<VM> GetVMs(int _dashboardId)
         {

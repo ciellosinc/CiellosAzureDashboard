@@ -13,6 +13,8 @@ namespace CiellosAzureDashboard.Model
         public int settingId { get; set; }
         [DisplayName("Certificate Thumbprint")]
         public string certificateThumbprintStr { get; set; }
+        [DisplayName("REST API Secret key")]
+        public string apiKeyString { get; set; }
         [DisplayName("Maximum number of events for store VM logs(per VM)")]
 
         public int MaxNumEventsLogStorePerVM { get; set; }

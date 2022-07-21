@@ -4,6 +4,7 @@ using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.AzureAD.UI;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -41,6 +42,7 @@ namespace CiellosAzureDashboard
             });
 
             services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));
+      //      services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme).AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             services.AddSingleton<IAuthorizationHandler, IsSuperUserHandler>();
             services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
             {
@@ -62,15 +64,15 @@ namespace CiellosAzureDashboard
                     },
                 };
             });
-            
-            services.AddMvc(options =>
+
+            services.AddMvc(/*options =>
             {
                 var policy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
                 
-            })
+            }*/)
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddRazorPagesOptions(o =>
                 {
@@ -78,10 +80,11 @@ namespace CiellosAzureDashboard
                     o.Conventions.AllowAnonymousToPage("/Logs/Index");
                     o.Conventions.AllowAnonymousToPage("/Dashboard");
                     o.Conventions.AllowAnonymousToPage("/AnonymousDashboard");
+               //     o.Conventions.AllowAnonymousToPage("/api/management");
                 }).AddJsonOptions(opt =>
                 {
-                    opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                //    opt.JsonSerializerOptions.r = new CamelCasePropertyNamesContractResolver();
+                 //   opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 });
             services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             services.AddOData();
@@ -121,7 +124,8 @@ namespace CiellosAzureDashboard
             app.UseAuthentication();
             app.UseMvc(routeBuilder =>
             {
-                routeBuilder.MapODataServiceRoute("ODataRoutes", "odata", modelBuilder.GetEdmModel(app.ApplicationServices));
+                routeBuilder.MapRoute(name: "api", template: "api/{controller=management}");
+              //  routeBuilder.MapODataServiceRoute("ODataRoutes", "odata", modelBuilder.GetEdmModel(app.ApplicationServices));
             });
         }
     }
