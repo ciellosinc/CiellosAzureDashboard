@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using CiellosAzureDashboard.Data;
@@ -18,6 +18,10 @@ namespace CiellosAzureDashboard
         List<VM> GetVirtualMachinesByAccessCode(string _accessCode);
         JsonResult GetVirtualMachinesByUser(ClaimsPrincipal _currentUser);
         Task UpdateAllVirtualMashinesAsync();
+        void StartVM(string vMId);
+        void StopVM(string vMId);
+        VM GetVM(string _vmguid);
+        IVirtualMachine GetVMFromAzure(string vMId);
         //IDbContextTransaction GetTransaction(CADContext _context);
         //void CommitTransaction();
         //void RollbackTransaction();

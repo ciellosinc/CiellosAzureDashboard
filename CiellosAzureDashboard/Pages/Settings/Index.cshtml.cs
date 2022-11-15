@@ -66,6 +66,13 @@ namespace CiellosAzureDashboard.Pages.Settings
             {
                 await context.SaveChangesAsync();
             }
+            if (await TryUpdateModelAsync<Setting>(
+                 sett,
+                 "settings",
+                   c => c.apiKeyString))
+            {
+                await context.SaveChangesAsync();
+            }
             SaveResult = "Settings saved.";
             return Page();
         }
