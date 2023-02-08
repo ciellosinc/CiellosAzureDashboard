@@ -19,7 +19,7 @@
     },
     "repoUrl": {
       "type": "string",
-      "defaultValue": "https://github.com/ciellos-dev/CiellosAzureDashboard.git",
+      "defaultValue": "https://github.com/ciellosinc/CiellosAzureDashboard.git",
       "metadata": {
         "description": "Optional Git Repo URL"
       }
