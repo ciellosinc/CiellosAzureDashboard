@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "244c3b46-0e87-4afa-ba4c-93f759e1b81a",
+		"name": "Ciellos Azure Environment Dashboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1324416"
+	},
+	"item": [
+		{
+			"name": "Start",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "GeneratePasswordHere https://yourenvironmentdashboard.azurewebsites.net/Settings",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "ApiKey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"VMName\": \"ServerWin22-PU\",\r\n  \"ResourceGroup\": \"SERVERWIN22-PU\",\r\n  \"SubscriptionId\": \"70c7069a-1f29-4817-8b69-2c402a7b6808\",\r\n  \"Action\": \"Start\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://yourenvironmentdashboard.azurewebsites.net/api/Management",
+					"protocol": "https",
+					"host": [
+						"ciellosazuredashboard",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Management"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "GeneratePasswordHere https://yourenvironmentdashboard.azurewebsites.net/Settings",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "ApiKey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"VMName\": \"ServerWin22-PU\",\r\n  \"ResourceGroup\": \"SERVERWIN22-PU\",\r\n  \"SubscriptionId\": \"70c7069a-1f29-4817-8b69-2c402a7b6808\",\r\n  \"Action\": \"Status\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://yourenvironmentdashboard.azurewebsites.net/api/Management",
+					"protocol": "https",
+					"host": [
+						"ciellosazuredashboard",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Management"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stop",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "GeneratePasswordHere https://yourenvironmentdashboard.azurewebsites.net/Settings",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "ApiKey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"VMName\": \"ServerWin22-PU\",\r\n  \"ResourceGroup\": \"SERVERWIN22-PU\",\r\n  \"SubscriptionId\": \"70c7069a-1f29-4817-8b69-2c402a7b6808\",\r\n  \"Action\": \"Stop\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://yourenvironmentdashboard.azurewebsites.net/api/Management",
+					"protocol": "https",
+					"host": [
+						"ciellosazuredashboard",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Management"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
