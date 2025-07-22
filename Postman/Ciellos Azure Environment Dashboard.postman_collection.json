@@ -14,7 +14,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "GeneratePasswordHere https://yourenvironmentdashboard.azurewebsites.net/Settings",
+							"value": "{{ApiKey}}",
 							"type": "string"
 						},
 						{
@@ -36,12 +36,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://yourenvironmentdashboard.azurewebsites.net/api/Management",
-					"protocol": "https",
+					"raw": "{{baseURL}}/api/Management",
 					"host": [
-						"ciellosazuredashboard",
-						"azurewebsites",
-						"net"
+						"{{baseURL}}"
 					],
 					"path": [
 						"api",
@@ -59,7 +56,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "GeneratePasswordHere https://yourenvironmentdashboard.azurewebsites.net/Settings",
+							"value": "{{ApiKey}}",
 							"type": "string"
 						},
 						{
@@ -81,12 +78,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://yourenvironmentdashboard.azurewebsites.net/api/Management",
-					"protocol": "https",
+					"raw": "{{baseURL}}/api/Management",
 					"host": [
-						"ciellosazuredashboard",
-						"azurewebsites",
-						"net"
+						"{{baseURL}}"
 					],
 					"path": [
 						"api",
@@ -104,7 +98,7 @@
 					"apikey": [
 						{
 							"key": "value",
-							"value": "GeneratePasswordHere https://yourenvironmentdashboard.azurewebsites.net/Settings",
+							"value": "{{ApiKey}}",
 							"type": "string"
 						},
 						{
@@ -126,12 +120,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://yourenvironmentdashboard.azurewebsites.net/api/Management",
-					"protocol": "https",
+					"raw": "{{baseURL}}/api/Management",
 					"host": [
-						"ciellosazuredashboard",
-						"azurewebsites",
-						"net"
+						"{{baseURL}}"
 					],
 					"path": [
 						"api",
@@ -140,6 +131,40 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://yourenvironmentdashboard.azurewebsites.net",
+			"type": "default"
+		},
+		{
+			"key": "ApiKey",
+			"value": "GeneratePasswordHere https://yourenvironmentdashboard.azurewebsites.net/Settings",
+			"type": "default"
 		}
 	]
 }
